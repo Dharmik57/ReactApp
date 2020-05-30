@@ -1,6 +1,7 @@
 // Container COMPONENT (Construct only for view  )
 import React from 'react';
-import { Card, CardImg, CardText,CardTitle } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody,CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -49,12 +50,23 @@ import { Card, CardImg, CardText,CardTitle } from 'reactstrap';
     if (props.dish != null)
         return( 
             <div className = "container">
-            <div className = "row">
-                {/* Display the list of dishes */}
-                <RenderDish dish={props.dish}/>
-                {/* Display the selcted dish and comment  */}
-                <RenderComments selectedcomment={props.dish.comments}/>
-            </div>
+                <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>{props.dish.name}</h3>
+                        <hr />
+                    </div>                
+                </div>
+                
+                <div className = "row">
+                    {/* Display the list of dishes */}
+                    <RenderDish dish={props.dish}/>
+                    {/* Display the selcted dish and comment  */}
+                    <RenderComments selectedcomment={props.comments}/>
+                </div>
             </div>
         );
     else
