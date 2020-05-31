@@ -14,12 +14,21 @@ class Contact extends Component {
             email: '',
             agree: false,
             contactType: 'Tel.',
-            message: ''
+            message: '',
+            touched:{
+                firstname: false,
+                lastname: false,
+                telnum: false,
+                email: false
+            }
         };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    handleBlur(){
+        
+    }   
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -76,7 +85,7 @@ class Contact extends Component {
                     </div>
                 </div>
 
-
+                {/* //uncontrolled form */}
                 <div className="row row-content">
                    <div className="col-12">
                       <h3>Send us your Feedback</h3>
