@@ -21,7 +21,6 @@ import { Link } from 'react-router-dom';
 
    function RenderComments({selectedcomment})
     {
-    
         const rencomment = selectedcomment.map((c) => 
             <li>
              <p>{c.comment}</p>
