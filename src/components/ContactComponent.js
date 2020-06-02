@@ -147,22 +147,22 @@ class Contact extends Component {
                             <Row className="form-group">
                                 <Label htmlFor="email" md={2}>Email</Label>
                                 <Col md={10}>
-                                    <Control.text model=".email" id="email" name="email"
-                                        placeholder="Email"
-                                        className="form-control"
-                                        validators={{
-                                            required, validEmail
-                                        }}
-                                         />
-                                    <Errors
-                                        className="text-danger"
-                                        model=".email"
-                                        show="touched"
-                                        messages={{
-                                            required: 'Required',
-                                            validEmail: 'Invalid Email Address'
-                                        }}
-                                     />
+                                        <Control.text model=".email" id="email" name="email"
+                                            placeholder="Email"
+                                            className="form-control"
+                                            validators={{
+                                                required, validEmail
+                                            }}
+                                            />
+                                        <Errors
+                                            className="text-danger"
+                                            model=".email"
+                                            show="touched"
+                                            messages={{
+                                                required: 'Required',
+                                                validEmail: 'Invalid Email Address'
+                                            }}
+                                        />
                                 </Col>
                             </Row>
                             <Row className="form-group">
