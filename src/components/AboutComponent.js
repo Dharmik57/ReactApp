@@ -1,6 +1,8 @@
 import React from 'react';
 import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 
 function RenderLeader({leader}){
@@ -12,7 +14,7 @@ function RenderLeader({leader}){
                 <div key={ldr.id} className="col-12 mt-5">
                 <Media tag="li">
                   <Media left middle>
-                      <Media object src={ldr.image} alt={ldr.name} />
+                      <Media object src={baseUrl+ldr.image} alt={ldr.name} />
                   </Media>
                   <Media body className="ml-5">
                     <Media heading>{ldr.name}</Media>
