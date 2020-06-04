@@ -1,7 +1,6 @@
 // Container COMPONENT (Construct only for view  )
 import React,{Component} from 'react';
-import { Card, CardImg, CardText,  Modal, ModalHeader, ModalBody, Row, Col,Label,Button,
-    CardBody,CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardImg, CardText,  Modal, ModalHeader, ModalBody, Row, Col,Label,Button,CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 // import CommentForm from './CommentFormComponent';
@@ -27,7 +26,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
         );
     }
 
-   function RenderComments({selectedcomment, addComment, dishId })
+   function RenderComments({selectedcomment, postComment, dishId })
     {
         const rencomment = selectedcomment.map((c) => 
             <li>
@@ -43,7 +42,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
                 <ul className="list-unstyled">
                 {rencomment}
                 </ul>
-                <CommentForm dishId={dishId} addComment={addComment}/>
+                <CommentForm dishId={dishId} postComment={postComment}/>
                 </div>
             );
         else
@@ -91,7 +90,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
                     <RenderDish dish={props.dish}/>
                     {/* Display the selcted dish and comment  */}
                     <RenderComments selectedcomment={props.comments}
-                                    addComment={props.addComment}
+                                    postComment={props.postComment}
                                     dishId={props.dish.id}/>
 
                 </div>
@@ -133,7 +132,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
 
       handleSubmit(values) {
         console.log('Current State is: ' + JSON.stringify(values));
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
         
     }
   
