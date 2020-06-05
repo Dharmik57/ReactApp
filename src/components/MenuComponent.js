@@ -53,8 +53,7 @@ function RenderMenuItem ({dish, onClick}) {
                     </div>
                 );
             }
-            else
-    
+            else{
                 return (
                     <div className="container">
                         <div className="row">
@@ -72,6 +71,8 @@ function RenderMenuItem ({dish, onClick}) {
                         </div>
                     </div>
                 );
+            }
+               
         }
 
 
