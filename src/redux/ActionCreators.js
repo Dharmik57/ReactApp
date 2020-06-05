@@ -1,14 +1,17 @@
 import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 
-import { DISHES } from '../shared/dishes';
-
 
 export const addComment = (comment) => ({
   type: ActionTypes.ADD_COMMENT,
   payload: comment
 });
 
+
+
+
+
+// POsting to server is here
 export const postComment = (dishId, rating, author, comment) => (dispatch) => {
 
   const newComment = {
@@ -43,6 +46,49 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
   .then(response => dispatch(addComment(response)))
   .catch(error =>  { console.log('post comments', error.message); alert('Your comment could not be posted\nError: '+error.message); });
 };
+
+export const postFeedback = (firstname, lastname, telnum, email,agree,contactType,message) => (dispatch) => {
+
+  const newFeedback = {
+    firstname: firstname,
+    lastname: lastname,
+    telnum: telnum,
+    email: email,
+    agree: agree,
+    contactType: contactType,
+    message: message
+  };
+  newFeedback.date = new Date().toISOString();
+  
+  return fetch(baseUrl + 'feedback', {
+      method: "POST",
+      body: JSON.stringify(newFeedback),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+  })
+  .then(response => {
+      if (response.ok) {
+        
+        return response;
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+          throw error;
+    })
+  .then(response => response.json())
+  .then(response => {
+    alert("Thank you for your feedback!\n" + JSON.stringify(response)); 
+    return response; 
+  })
+  .catch(error =>  { console.log('post Feedback', error.message); alert('Your Feedback could not be posted\nError: '+error.message); });
+};
+
 //fetching here 
 
 //this is a thunk because it is returning a function ,here dispatch is a inner function
